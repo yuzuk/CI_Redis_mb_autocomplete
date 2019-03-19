@@ -8,7 +8,7 @@ Inspired by https://github.com/rishair/php-redis-autocomplete
 
  インストール
 
-Predis (https://github.com/nrk/predis)　に依存します。
+依存します Predis (https://github.com/nrk/predis)
 
 system\libraries\Redis_mb_autocomplete.php をコピー
 
@@ -34,11 +34,19 @@ system\libraries\Redis_mb_autocomplete.php をコピー
         echo json_encode($ret);
     }
     
-   [View]ドロップダウンリスト
-    
-    <?php echo form_dropdown("users", $users, 1); ?>
+   [View]jQuery UI 呼び出し、テキストボックス実装
+   
+   ※jQuery本体は別途読み込んでいます。
+   
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+     
+    <label for="result">Username</label>
+    <input type="text" id="result" name="result" placeholder="ユーザー名" class="" />
+
     
    [js]jQuery.autocompleteでAutoComplete
+   
+   コントローラのsearchメソッドの引数にテキストボックスの入力値を渡すと、検索された候補が戻されます。
     
     $(function() {
     $("#result").autocomplete({
@@ -65,4 +73,12 @@ system\libraries\Redis_mb_autocomplete.php をコピー
     });
   });
   
+ スクリーンショット　半角英字の入力
   
+  ![スクリーンショット](https://github.com/yuzuk/CI_Redis_mb_autocomplete/blob/Images/capture_1.png "半角英字")
+  
+ スクリーンショット　日本語の入力
+  
+  ![スクリーンショット](https://github.com/yuzuk/CI_Redis_mb_autocomplete/blob/Images/capture_2.png "半角英字")
+
+  生成しました。なんちゃって個人情報(http://kazina.com/dummy/)
